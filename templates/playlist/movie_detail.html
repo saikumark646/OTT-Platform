@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load rating %}
+{%block content%}
+{%if title%}
+    <h1>{{title}}</h1>
+{%endif%}
+<div>
+    {% rating instance=object %}
+</div>
+
+<div>
+    <ul>
+        <li>{{object.title}} slug is {{object.slug}},id is {{object.id}} {{object.get_short_display}}</li>
+    </ul
+
+    <h1> {% include 'videos/embed.html' with video_id=object.get_video_id %} </h1>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,23 @@
+{%load rating%}
+<h3> this is a Show </h3>
+<div>
+    {% rating instance=show rating_only=True%}
+</div>
+
+<div>
+    <a href = "{{show.get_absolute_url}}" >
+        {{show}} 
+    </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- {{show}} show has {{show.playlist_set.published.count}} Seasons-->

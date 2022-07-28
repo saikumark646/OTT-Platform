@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load rating %}
+{%block content%}
+{%if title%}
+    <h1>{{title}}</h1>
+{%endif%}
+<div>
+    {% rating instance=object %}
+</div>
+<div>
+    <h3>{{object.title}} Trailer </h3>
+    {% include 'videos/embed.html' with video_id=object.get_video_id %}
+
+    {% for season in object.seasons  %}
+    <li> {{forloop.counter}} --
+        <a href ='{{season.get_absolute_url}}'>{{season.title}}</a>
+    </li> 
+</div>
+{% endfor %}
+{% endblock %}
+
+

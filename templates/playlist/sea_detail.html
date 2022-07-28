@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{%if title%}
+    <h1>{{object.title}}</h1>
+{%endif%}
+
+<h3> Trailer </h3>
+{% include 'videos/embed.html' with video_id=object.get_video_id %}
+
+    <h3> All Episodes </h3>
+{% for episode in object.get_episodes %}
+    <h5> Episode {{episode.order}} </h5>
+    {% include 'videos/embed.html' with video_id=episode.video.get_video_id %}
+{%endfor%}
+
+{% endblock %}
+
+

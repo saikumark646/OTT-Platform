@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{%if title%}
+    <h1>{{title}}</h1>
+{%endif%}
+
+{% for instance in object_list %}
+<div> 
+
+    {% if instance.is_movie %}
+        {% include 'playlist/cards/movie.html' with movie=instance %}
+    {% elif instance.is_show %}
+        {% include 'playlist/cards/show.html' with show=instance %}
+    {%endif%}
+</div>
+{%endfor%} 
+
+
+
+{% endblock %}
+
+
+
+<!--
+<li>{{instance.title}}{{instance.playlist_set.count}} Seasons</li>
+-->

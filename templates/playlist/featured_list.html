@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+{% for instance in object_list %}
+    <div> 
+        <h1> {{instance.title}} </h1>
+        <!-- <p>  {{instance.description}} </p> -->
+        {% for item in instance.get_related_items %}
+            {% if item.related.is_movie %}
+                {% include 'playlist/cards/movie.html' with movie=item.related %}
+            {% elif item.related.is_show %}
+                {% include 'playlist/cards/show.html' with show=item.related %}
+            {%endif%}
+        {%endfor%}
+
+    </div>
+
+
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+<!--
+<li>{{instance.title}}{{instance.playlist_set.count}} Seasons</li>
+-->
